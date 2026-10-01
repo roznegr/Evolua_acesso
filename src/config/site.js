@@ -18,7 +18,7 @@ export const LEAD = {
   endpoint: env.VITE_LEAD_ENDPOINT || '',
   timeoutMs: 12000,
   // Em `npm run dev`, sem endpoint, o envio é simulado. Em produção, sem endpoint, o formulário mostra erro.
-  allowMockWhenNoEndpoint: Boolean(env.DEV),
+  allowMockWhenNoEndpoint: Boolean(env.DEV || env.VITE_LEAD_MOCK), // VITE_LEAD_MOCK: só para builds de preview
 };
 
 export const ANALYTICS = {
