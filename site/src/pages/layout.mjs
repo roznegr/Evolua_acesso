@@ -3,7 +3,7 @@ import { ROTAS } from './rotas.mjs';
 import { CTA } from './comp.mjs';
 import { PAGINAS, ORDEM } from './paginas.mjs';
 
-const NAV = [['condominios', 'Condomínios'], ['empresas', 'Empresas'], ['portaria', 'Portaria remota'], ['solucoes', 'Soluções'], ['blog', 'Conteúdos'], ['contato', 'Contato']];
+const NAV = [['condominios', 'Condomínios'], ['empresas', 'Empresas'], ['portaria', 'Portaria remota'], ['solucoes', 'Soluções'], ['sobre', 'Sobre'], ['blog', 'Conteúdos'], ['contato', 'Contato']];
 
 const logoHtml = (ctx, filtro = '') => (ctx.logo
   ? `<img src="${ctx.logo}" alt="Evolua Acesso Protegido" width="111" height="40" style="height:40px;width:auto;${filtro}">`

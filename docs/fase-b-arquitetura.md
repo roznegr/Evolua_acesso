@@ -174,5 +174,5 @@ Feedback do cliente sobre o protótipo: a home estava longa demais. Nova estrutu
 - **Soluções** (`/servicos`): hub que leva a uma página avulsa por solução: **Controle de acesso** (`/acesso`), **App Evolua** (`/app-evolua`), **Evolua Loker** (`/evolua-loker`), **Automação** (`/automacao`).
 - **Conteúdos** (`/blog`, com o slot na home), **Trabalhe conosco** (`/trabalhe-conosco`), **Contato** (`/contato`) e **Sobre** (`/qualidade`).
 - **Cor:** o grafite entra como fundo (hero, escolha de caminho e CTA final) e o verde deixa de ser fundo de seção. O verde segue como cor de ação e destaque. Decisão do cliente; o Design System usa o grafite sobretudo como cor de texto (7% da proporção).
-- **Menu:** Condomínios · Empresas · Portaria remota · Soluções · Conteúdos · Contato, e botão "Análise gratuita".
+- **Menu:** Condomínios · Empresas · Portaria remota · Soluções · Sobre · Conteúdos · Contato, e botão "Análise gratuita".
 - Páginas locais (Macaé e Rio das Ostras) ficam para a etapa seguinte.

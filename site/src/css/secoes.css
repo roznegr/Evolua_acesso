@@ -46,12 +46,13 @@
 
 /* Indicadores */
 .ind__lista { display: grid; gap: var(--espaco-6); }
-.ind__item { display: grid; gap: var(--espaco-1); }
+.ind__item { display: grid; gap: var(--espaco-1); min-width: 0; }
+.ind__item .numero { font-size: clamp(2.75rem, 5vw, 4.5rem); }
 .ind__item .numero { color: var(--texto); }
 .ind__rot { color: var(--texto-suave); display: inline-flex; align-items: center; gap: var(--espaco-1); }
 .ind__rot .status { padding: 0.25rem 0.7rem; }
 .ind__fonte { margin-top: var(--espaco-4); }
-@media (min-width: 768px) { .ind__lista { grid-template-columns: repeat(3, 1fr); gap: var(--espaco-4); } }
+@media (min-width: 1024px) { .ind__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espaco-4); } }
 
 /* Valor */
 .valor__in { display: grid; gap: var(--espaco-6); align-items: center; }
@@ -203,9 +204,11 @@
 .grade-cartoes .card { display: grid; gap: var(--espaco-1); align-content: start; }
 .cartao-link { text-decoration: none; color: inherit; }
 .cartao-link .link { margin-top: var(--espaco-1); }
-.numero--m { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--destaque); }
+.numero--m { font-size: clamp(1.75rem, 1rem + 1.6vw, 2.5rem); color: var(--destaque); }
 @media (min-width: 640px) { .grade-cartoes { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1024px) { .grade-cartoes.cols-3 { grid-template-columns: repeat(3, 1fr); } .grade-cartoes.cols-4 { grid-template-columns: repeat(4, 1fr); } .grade-cartoes { grid-template-columns: repeat(3, 1fr); } .grade-cartoes.cols-2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .grade-cartoes.cols-3 { grid-template-columns: repeat(3, 1fr); } .grade-cartoes { grid-template-columns: repeat(3, 1fr); } .grade-cartoes.cols-2 { grid-template-columns: 1fr 1fr; } .grade-cartoes.cols-4 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1200px) { .grade-cartoes.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.grade-cartoes .card { min-width: 0; overflow-wrap: anywhere; }
 
 .lista-check { display: grid; gap: 0.6rem; margin-bottom: var(--espaco-3); max-width: 62ch; }
 .lista-check li { position: relative; padding-left: 1.8rem; }
@@ -232,14 +235,14 @@
 .final .painel .t3 { color: var(--texto); }
 .form__ok .t3 { color: var(--texto); }
 
-/* Hero com foto: a imagem ocupa a lateral direita e dissolve no fundo, sem moldura nem slot */
-.hero--foto { position: relative; isolation: isolate; padding-block: 0; background: linear-gradient(180deg, var(--foto-topo) 0%, var(--foto-meio) 55%, var(--foto-base) 100%); overflow: hidden; }
+/* Hero com foto inteira (sem corte): a imagem é o fundo; o texto fica na área escura à esquerda, como na composição original */
+.hero--foto { position: relative; isolation: isolate; padding-block: 0; background: var(--foto-topo); overflow: hidden; }
 .hero--foto .hero__in { grid-template-columns: 1fr; padding-block: var(--espaco-8) var(--espaco-4); gap: 0; }
-.hero__foto { display: block; width: 100%; height: 22rem; object-fit: cover; object-position: 50% 10%; -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 30%); mask-image: linear-gradient(to bottom, transparent 0, black 30%); }
+.hero__foto { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
 .hero__legenda { position: absolute; right: var(--margem); bottom: var(--espaco-2); z-index: 1; font-size: 0.75rem; color: var(--texto-suave); }
 @media (min-width: 900px) {
-  .hero--foto { min-height: clamp(34rem, 46vw, 42rem); display: flex; align-items: center; }
-  .hero--foto .hero__in { padding-block: var(--espaco-12); }
-  .hero--foto .hero__txt { max-width: 36rem; }
-  .hero__foto { position: absolute; right: 0; top: 0; width: min(54%, 48rem); height: 100%; z-index: -1; object-position: 50% 8%; -webkit-mask-image: linear-gradient(to right, transparent 0, black 34%); mask-image: linear-gradient(to right, transparent 0, black 34%); }
+  .hero--foto { aspect-ratio: 16 / 9; max-height: 48rem; display: flex; align-items: center; }
+  .hero--foto .hero__in { padding-block: var(--espaco-6); }
+  .hero--foto .hero__txt { max-width: min(36rem, 44vw); }
+  .hero__foto { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-position: right center; }
 }

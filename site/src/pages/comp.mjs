@@ -26,7 +26,9 @@ export const migalha = (ctx, itens) => `
 
 export function foto(ctx, slot, descricao, { alt = '', aspecto = '', ilustrativa = true } = {}) {
   const src = ctx.fotos[slot];
-  const estilo = aspecto ? ` style="aspect-ratio:${aspecto}"` : '';
+  // Fotos horizontais (16:9) entram inteiras, sem corte.
+  const proporcao = src && ['hero', 'central'].includes(slot) ? '16 / 9' : aspecto;
+  const estilo = proporcao ? ` style="aspect-ratio:${proporcao}"` : '';
   if (!src) return `<div class="slot" data-slot="${slot}" data-rotulo="Foto provisória: ${descricao}"${estilo}></div>`;
   return `<figure class="slot tem-foto" data-slot="${slot}"${estilo}><img src="${src}" alt="${alt || descricao}" loading="lazy" decoding="async">${ilustrativa ? '<figcaption>Imagem ilustrativa</figcaption>' : ''}</figure>`;
 }

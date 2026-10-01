@@ -11,5 +11,6 @@ Sem o arquivo, o site mostra um espaço reservado com a descrição da foto.
 
 ## Situação atual (01/10)
 
-- `hero.webp`: foto do rosto com a camada de reconhecimento facial, **cortada** para retirar o cartão "Autorizado" com nome de pessoa. Imagem ilustrativa. No hero da home ela ocupa a lateral direita e dissolve no fundo, sem moldura; o fundo do hero usa as cores de borda da foto (`--foto-topo`, `--foto-meio`, `--foto-base` em `tokens.css`). Ao trocar a foto, ajuste essas três cores.
-- `central.webp`: central de atendimento. Imagem ilustrativa; trocar por foto real da central da Evolua quando houver.
+- `hero.webp`: foto do rosto com a camada de reconhecimento facial, **inteira e sem corte** (16:9), como foi enviada. É o fundo do hero da home: o texto fica na área escura à esquerda. Aparece também, em 16:9, em Condomínios e em Controle de acesso. Imagem ilustrativa.
+- `central.webp`: central de atendimento, inteira (16:9). Imagem ilustrativa; trocar por foto real da central da Evolua quando houver.
+- Fotos horizontais (16:9) entram sempre inteiras; as demais usam o enquadramento do espaço reservado.
