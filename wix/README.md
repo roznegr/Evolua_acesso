@@ -25,6 +25,15 @@ e use **Incorporar → Site** apontando para ele. Mesma ponte de analytics e mes
 O front envia dois tipos: `lead` (envio do formulário) e `lead_update` (resposta de timing, sem PII).
 O `generate_lead` só é disparado após resposta 2xx.
 
+## Resultado por e-mail (rozana.negreiros@evoluatech.com.br)
+O endereço fica só no Wix (nunca no código do site). Sem programar:
+1. No Wix → Automações → Nova automação: gatilho **"Novo item adicionado à coleção Leads"**.
+2. Ação **Enviar e-mail** para `rozana.negreiros@evoluatech.com.br`.
+3. No corpo, insira os campos do item: `name`, `whatsapp`, `email`, `condominium`, `city`, `routing` e
+   **`salesSummary`** (já traz papel, estrutura atual, preocupações, nível das 4 dimensões e prioridade).
+4. Opcional: segunda automação para `lead_update` (timing) ao alterar o campo `timing` do item.
+O JSON completo (todas as respostas e scores) fica no campo `payload` da coleção.
+
 ## GA4 / GTM
 - Instale o GTM no Wix (Marketing → Integrações) e cole `wix/parent-bridge.js` em
   Configurações → Custom Code (Body – end). Ele recebe os eventos do iframe e os coloca no `dataLayer`.
