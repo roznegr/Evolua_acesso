@@ -44,7 +44,8 @@ const fontesLocais = '<style>@font-face{font-family:"Baloo 2";font-weight:500 80
 export function carregarFotos() {
   const dir = join(raiz, 'site/assets/fotos');
   const fotos = {};
-  if (!existsSync(dir)) return fotos;
+  const aspectos = {};
+  if (!existsSync(dir)) return { fotos, aspectos };
   for (const nome of readdirSync(dir)) {
     const m = nome.match(/^([a-z0-9-]+)\.(webp|jpe?g|png)$/i);
     if (!m) continue;
@@ -52,16 +53,19 @@ export function carregarFotos() {
     try {
       execFileSync('convert', [join(dir, nome), '-resize', '1400x1400>', '-strip', '-quality', '78', saida], { stdio: 'pipe' });
       fotos[m[1]] = `data:image/webp;base64,${readFileSync(saida).toString('base64')}`;
+      const [w, h] = execFileSync('identify', ['-format', '%w %h', saida], { stdio: 'pipe' }).toString().trim().split(' ');
+      aspectos[m[1]] = `${w} / ${h}`;
     } catch { console.warn(`foto ignorada (falha ao converter): ${nome}`); }
   }
-  return fotos;
+  return { fotos, aspectos };
 }
 
 function contexto(sabor) {
   const facts = JSON.parse(ler('site/data/facts.json'));
   const logoPng = join(raiz, 'src/assets/logo-evolua.png');
   const logo = existsSync(logoPng) ? `data:image/png;base64,${readFileSync(logoPng).toString('base64')}` : '';
-  return criarCtx(facts, { marcar: sabor !== 'producao', modo: sabor === 'producao' ? 'site' : 'prototipo', logo, fotos: carregarFotos() });
+  const { fotos, aspectos } = carregarFotos();
+  return criarCtx(facts, { marcar: sabor !== 'producao', modo: sabor === 'producao' ? 'site' : 'prototipo', logo, fotos, aspectos });
 }
 
 const AVISO = '<aside class="proto" role="note"><span><strong>Protótipo para validação.</strong> Fotos sem arquivo são espaços reservados.</span><span>Conteúdo <mark>provisório</mark> aparece com contorno tracejado.</span><span>Formulários em simulação.</span></aside>';

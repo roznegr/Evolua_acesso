@@ -3,10 +3,10 @@ import { ROTAS, PRIVACIDADE } from './rotas.mjs';
 
 export const CTA = 'Quero minha análise gratuita';
 
-export function criarCtx(facts, { marcar = false, modo = 'prototipo', logo = '', fotos = {} } = {}) {
+export function criarCtx(facts, { marcar = false, modo = 'prototipo', logo = '', fotos = {}, aspectos = {} } = {}) {
   const proto = modo === 'prototipo';
   const ctx = {
-    facts, marcar, modo, logo, fotos,
+    facts, marcar, modo, logo, fotos, aspectos,
     e: facts.empresa,
     cidades: facts.empresa.cidades.join(' e '),
     href: (k) => (k === 'privacidade' ? (proto ? '#contato' : PRIVACIDADE) : proto ? `#${k}` : ROTAS[k].url),
@@ -24,13 +24,20 @@ export const cab = ({ rotulo, titulo, sub = '', id = '' }) => `
 export const migalha = (ctx, itens) => `
 <nav class="migalha" aria-label="Você está em"><ol>${[['home', 'Início'], ...itens].map(([k, t], i, a) => (i < a.length - 1 ? `<li><a href="${ctx.href(k)}">${t}</a></li>` : `<li aria-current="page">${t}</li>`)).join('')}</ol></nav>`;
 
+const ALTS = {
+  hero: 'Pessoa sorrindo sendo reconhecida por reconhecimento facial na entrada',
+  central: 'Operadores trabalhando na central de atendimento, com telas de monitoramento ao fundo',
+  condominio: 'Família sorrindo diante de um prédio residencial, com a chave na mão',
+  empresa: 'Pessoas passando por catracas de controle de acesso na entrada de um prédio comercial',
+};
+
+// Toda foto entra inteira, na proporção original (sem corte). Sem arquivo, o slot fica reservado.
 export function foto(ctx, slot, descricao, { alt = '', aspecto = '', ilustrativa = true } = {}) {
   const src = ctx.fotos[slot];
-  // Fotos horizontais (16:9) entram inteiras, sem corte.
-  const proporcao = src && ['hero', 'central'].includes(slot) ? '16 / 9' : aspecto;
+  const proporcao = (src && ctx.aspectos?.[slot]) || aspecto;
   const estilo = proporcao ? ` style="aspect-ratio:${proporcao}"` : '';
   if (!src) return `<div class="slot" data-slot="${slot}" data-rotulo="Foto provisória: ${descricao}"${estilo}></div>`;
-  return `<figure class="slot tem-foto" data-slot="${slot}"${estilo}><img src="${src}" alt="${alt || descricao}" loading="lazy" decoding="async">${ilustrativa ? '<figcaption>Imagem ilustrativa</figcaption>' : ''}</figure>`;
+  return `<figure class="slot tem-foto" data-slot="${slot}"${estilo}><img src="${src}" alt="${alt || ALTS[slot] || descricao}" loading="lazy" decoding="async">${ilustrativa ? '<figcaption>Imagem ilustrativa</figcaption>' : ''}</figure>`;
 }
 
 export function heroInterno(ctx, { p, uni = 'claro', migalhas, rotulo, h1, sub, secundario = '', slot, descricao, aspecto = '4 / 3', chip = '' }) {
@@ -73,7 +80,7 @@ export function linhaSolucao(ctx, s, i) {
       <dl class="sol__ps"><div><dt>Problema</dt><dd>${s.problema}</dd></div>
       <div><dt>Solução</dt><dd>${s.solucao}</dd></div>
       <div class="${ctx.prov(s.prov).trim()}"><dt>Benefício${ctx.tag(s.prov)}</dt><dd>${s.beneficio}</dd></div></dl>
-      <a class="link" href="${ctx.href(s.rota)}">Conhecer a solução →</a></div>
+      <a class="link" href="${ctx.href(s.rota)}">${s.linkTxt || 'Conhecer a solução'} →</a></div>
   </div>
 </section>`;
 }

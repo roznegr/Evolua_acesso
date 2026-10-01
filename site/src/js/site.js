@@ -37,10 +37,10 @@
   function fecharMenu() { if (menuMob) { menuMob.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.setAttribute('aria-label', 'Abrir menu'); } }
   function ir(id, manterRolagem) {
     var alvo = paginas.filter(function (p) { return p.getAttribute('data-pagina') === id; })[0] || paginas[0];
-    var chave = alvo.getAttribute('data-pagina');
+    var chave = alvo.getAttribute('data-pagina'), pai = alvo.getAttribute('data-pai') || chave;
     paginas.forEach(function (p) { p.hidden = p !== alvo; });
     doc.title = alvo.getAttribute('data-titulo') || doc.title;
-    doc.querySelectorAll('[data-nav]').forEach(function (a) { if (a.getAttribute('data-nav') === chave) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    doc.querySelectorAll('[data-nav]').forEach(function (a) { if (a.getAttribute('data-nav') === pai) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     fecharMenu();
     if (!manterRolagem) { window.scrollTo(0, 0); alvo.focus({ preventScroll: true }); }
     track('page_view', { page_id: chave });

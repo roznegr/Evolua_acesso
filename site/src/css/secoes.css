@@ -13,19 +13,21 @@
 .menu-mob { background: var(--fundo); border-bottom: 1px solid var(--borda-card); padding-block: var(--espaco-2) var(--espaco-4); }
 .menu-mob a { display: block; padding: 0.9rem 0; font: 600 1.125rem/1.2 var(--fonte-titulo); text-decoration: none; border-bottom: 1px solid var(--borda-card); }
 .menu-mob .legenda { margin-top: var(--espaco-3); }
-@media (min-width: 1024px) {
-  .cab__nav { display: flex; align-items: center; gap: var(--espaco-3); }
-  .cab__nav a { font-weight: 700; text-decoration: none; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
-  .cab__nav a:hover { border-bottom-color: var(--verde); }
+@media (min-width: 1200px) {
+  .cab__nav { display: flex; align-items: center; gap: 1.1rem; }
+  .cab__nav a { font-weight: 700; font-size: 0.9375rem; text-decoration: none; padding: 0.5rem 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .cab__nav a:hover, .cab__nav a[aria-current="page"] { border-bottom-color: var(--verde); }
   .menu-btn, .menu-mob { display: none; }
 }
+.menu-mob a[aria-current="page"] { color: var(--destaque); }
 
 /* Hero */
 .hero { padding-block: var(--espaco-6) var(--secao); overflow: hidden; }
 .hero__in { display: grid; gap: var(--espaco-6); align-items: center; }
 .hero__txt { display: grid; gap: var(--espaco-3); justify-items: start; }
-.chip-fac { display: inline-flex; align-items: center; gap: var(--espaco-1); padding: 0.4rem 0.9rem; border-radius: var(--raio-pill); background: var(--broto); color: var(--grafite); font-weight: 800; font-size: var(--t-rotulo); letter-spacing: 0.08em; text-transform: uppercase; }
-.chip-fac svg { width: 18px; height: 18px; color: var(--folha); }
+.chip-fac { display: inline-flex; align-items: center; gap: var(--espaco-1); padding: 0.4rem 0.9rem; border: 1.5px solid var(--sinal); border-radius: var(--raio-pill); background: transparent; color: var(--sinal); font-weight: 800; font-size: var(--t-rotulo); letter-spacing: 0.08em; text-transform: uppercase; }
+.chip-fac svg { width: 18px; height: 18px; color: inherit; }
+[data-universo="claro"] .chip-fac, [data-universo="broto"] .chip-fac { border-color: var(--folha); color: var(--folha); }
 .hero__conf { display: flex; flex-wrap: wrap; gap: var(--espaco-1) var(--espaco-3); }
 .hero__conf li { position: relative; padding-left: 1rem; }
 .hero__conf li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--verde); }
@@ -235,14 +237,16 @@
 .final .painel .t3 { color: var(--texto); }
 .form__ok .t3 { color: var(--texto); }
 
-/* Hero com foto inteira (sem corte): a imagem é o fundo; o texto fica na área escura à esquerda, como na composição original */
+/* Hero com foto inteira, adaptável: a altura acompanha a largura (16:9), limitada à altura da janela; texto e títulos escalam com a tela */
 .hero--foto { position: relative; isolation: isolate; padding-block: 0; background: var(--foto-topo); overflow: hidden; }
 .hero--foto .hero__in { grid-template-columns: 1fr; padding-block: var(--espaco-8) var(--espaco-4); gap: 0; }
 .hero__foto { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
 .hero__legenda { position: absolute; right: var(--margem); bottom: var(--espaco-2); z-index: 1; font-size: 0.75rem; color: var(--texto-suave); }
 @media (min-width: 900px) {
-  .hero--foto { aspect-ratio: 16 / 9; max-height: 48rem; display: flex; align-items: center; }
-  .hero--foto .hero__in { padding-block: var(--espaco-6); }
-  .hero--foto .hero__txt { max-width: min(36rem, 44vw); }
-  .hero__foto { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-position: right center; }
+  .hero--foto { height: clamp(30rem, 56.25vw, max(30rem, calc(100svh - 4.5rem))); display: flex; align-items: center; }
+  .hero--foto .hero__in { padding-block: clamp(var(--espaco-3), 4vw, var(--espaco-8)); }
+  .hero--foto .hero__txt { max-width: min(36rem, 44vw); gap: clamp(0.75rem, 1.6vw, 1.5rem); }
+  .hero--foto .t1 { font-size: clamp(2.5rem, 4.6vw, 4.75rem); }
+  .hero--foto .sub { font-size: clamp(1rem, 1.5vw, 1.375rem); }
+  .hero__foto { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-position: right top; }
 }

@@ -26,7 +26,7 @@ export function solucoes(ctx) {
     portaria: { rota: 'portaria', id: 'portaria-remota', slot: 'central', foto: 'operadores na central de atendimento (4:3).', titulo: 'Portaria <strong>remota</strong>',
       problema: 'Portaria que depende de turnos e de controle manual.',
       solucao: 'Central da Evolua na mesma cidade, supervisionada 24h, que atende visitantes e entregadores com conversa, imagens e registro gravados.',
-      beneficio: 'Mais controle e mais segurança sem depender de uma equipe de plantão.' },
+      beneficio: 'Mais controle e mais segurança sem depender de uma equipe de plantão.', linkTxt: 'Saiba mais' },
     acesso: { rota: 'acesso', id: 'controle-de-acesso', slot: 'acesso', foto: 'leitor de acesso em uma entrada (4:3).', titulo: 'Controle de <strong>acesso</strong>',
       problema: 'Não saber quem entrou, por onde e quando.',
       solucao: 'Evolua Access, com reconhecimento facial, gestão por cloud e monitoramento de eventos como arrombamento, pânico, porta que não fechou e emergência.',
@@ -95,6 +95,26 @@ export function home(ctx) {
   </div>
 </section>
 
+<section class="secao cam" id="caminhos" data-universo="grafite" aria-labelledby="h-cam">
+  <div class="container">
+    ${cab({ rotulo: 'Para quem', titulo: 'Escolha o seu <strong>caminho.</strong>', id: 'h-cam' })}
+    <div class="cam__grade">
+      <article class="cam__card card--hover" data-universo="claro">
+        ${foto(ctx, 'condominio', 'portão ou portaria de condomínio residencial.')}
+        <div class="sol__txt"><h3 class="t3">Para <strong>condomínios</strong></h3>
+        <p class="sub">Segurança, autonomia e praticidade para moradores, visitantes e administração.</p>
+        <a class="btn btn--primario" href="${ctx.href('condominios')}" data-evento="condominio_view">Conhecer soluções para condomínios <span class="seta" aria-hidden="true">→</span></a></div>
+      </article>
+      <article class="cam__card card--hover" data-universo="petroleo">
+        ${foto(ctx, 'empresa', 'entrada de empresa com controle de acesso.')}
+        <div class="sol__txt"><h3 class="t3">Para <strong>empresas</strong></h3>
+        <p class="sub">Mais controle e visibilidade sobre o acesso de colaboradores, visitantes e prestadores.</p>
+        <a class="btn btn--primario" href="${ctx.href('empresas')}" data-evento="empresa_view">Conhecer soluções para empresas <span class="seta" aria-hidden="true">→</span></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="secao" data-universo="broto" aria-labelledby="h-valor">
   <div class="container">
     ${cab({ rotulo: 'Acesso protegido', titulo: 'Mais do que abrir e fechar <strong>portas.</strong>', id: 'h-valor',
@@ -104,30 +124,10 @@ export function home(ctx) {
   </div>
 </section>
 
-<section class="secao cam" id="caminhos" data-universo="grafite" aria-labelledby="h-cam">
-  <div class="container">
-    ${cab({ rotulo: 'Para quem', titulo: 'Escolha o seu <strong>caminho.</strong>', id: 'h-cam' })}
-    <div class="cam__grade">
-      <article class="cam__card card--hover" data-universo="claro">
-        ${foto(ctx, 'condominio', 'portão ou portaria de condomínio residencial (16:9).', { aspecto: '16 / 9', ilustrativa: false })}
-        <div class="sol__txt"><h3 class="t3">Para <strong>condomínios</strong></h3>
-        <p class="sub">Segurança, autonomia e praticidade para moradores, visitantes e administração.</p>
-        <a class="btn btn--primario" href="${ctx.href('condominios')}" data-evento="condominio_view">Conhecer soluções para condomínios <span class="seta" aria-hidden="true">→</span></a></div>
-      </article>
-      <article class="cam__card card--hover" data-universo="petroleo">
-        ${foto(ctx, 'empresa', 'entrada de empresa com controle de acesso (16:9).', { aspecto: '16 / 9', ilustrativa: false })}
-        <div class="sol__txt"><h3 class="t3">Para <strong>empresas</strong></h3>
-        <p class="sub">Mais controle e visibilidade sobre o acesso de colaboradores, visitantes e prestadores.</p>
-        <a class="btn btn--primario" href="${ctx.href('empresas')}" data-evento="empresa_view">Conhecer soluções para empresas <span class="seta" aria-hidden="true">→</span></a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-${secao2('claro', 'home-blog', 'Conteúdos', 'Respostas para quem decide sobre a <strong>portaria.</strong>', cartoes([
-    { rotulo: 'Segurança', titulo: 'Portaria remota é segura se a internet cair?', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver conteúdos' },
-    { rotulo: 'Gestão de acesso', titulo: 'Como funciona o controle de visitantes', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver conteúdos' },
-    { rotulo: 'Portaria', titulo: 'Portaria remota ou controle de acesso: qual a diferença?', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver conteúdos' },
+${secao2('claro', 'home-blog', 'Blog', 'Respostas para quem decide sobre a <strong>portaria.</strong>', cartoes([
+    { rotulo: 'Segurança', titulo: 'Portaria remota é segura se a internet cair?', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver o blog' },
+    { rotulo: 'Gestão de acesso', titulo: 'Como funciona o controle de visitantes', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver o blog' },
+    { rotulo: 'Portaria', titulo: 'Portaria remota ou controle de acesso: qual a diferença?', texto: 'Artigo em preparação.', href: ctx.href('blog'), linkTxt: 'Ver o blog' },
   ], { cols: 'cols-3' }))}
 
 ${ctaFinal(ctx, { p: 'home', titulo: 'Vamos entender como os acessos funcionam hoje no seu condomínio ou empresa?', texto: 'Peça uma análise gratuita e receba um retorno de um especialista da Evolua.' })}`;
@@ -213,7 +213,7 @@ ${ctaFinal(ctx, { p: 'emp', titulo: 'Vamos entender como os acessos funcionam ho
 /* ---------- PORTARIA REMOTA ---------- */
 export function portaria(ctx) {
   return `
-${heroInterno(ctx, { p: 'portaria', migalhas: [['portaria', 'Portaria remota']], rotulo: 'Portaria remota',
+${heroInterno(ctx, { p: 'portaria', migalhas: [['solucoes', 'Soluções'], ['portaria', 'Portaria remota']], rotulo: 'Portaria remota',
     h1: 'Portaria remota com <strong>atendimento humano 24h.</strong>',
     sub: 'A central da Evolua atende visitantes e entregadores, consulta o morador e libera o acesso, com conversa, imagens e registro gravados.',
     secundario: `<a class="btn btn--secundario" ${ctx.rolar('por-como')}>Ver como funciona</a>`, slot: 'central', descricao: 'operadores na central de atendimento (4:3).' })}
@@ -346,8 +346,8 @@ export function blog(ctx) {
   const cats = ['Segurança condominial', 'Gestão de acesso', 'Portaria', 'Administração', 'Tecnologia'];
   return `
 <section class="secao hero-int" data-universo="claro" aria-labelledby="h1-blog">
-  <div class="container">${migalha(ctx, [['blog', 'Conteúdos']])}
-    <div class="secao__cab" style="margin:0"><p class="rotulo">Conteúdos</p>
+  <div class="container">${migalha(ctx, [['blog', 'Blog']])}
+    <div class="secao__cab" style="margin:0"><p class="rotulo">Blog</p>
       <h1 class="t1 t1--int" id="h1-blog">Respostas para quem decide sobre <strong>portaria e acesso.</strong></h1>
       <p class="sub corpo">Artigos sobre portaria remota, controle de acesso e segurança condominial e empresarial.</p></div>
     <ul class="chips" aria-label="Categorias">${cats.map((c) => `<li>${c}</li>`).join('')}</ul>

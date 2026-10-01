@@ -79,3 +79,28 @@ test('páginas de produção linkam para as URLs reais do Wix', () => {
   const home = montarPagina('home');
   for (const k of ['condominios', 'empresas', 'portaria', 'solucoes', 'blog', 'contato']) assert.ok(home.includes(`href="${ROTAS[k].url}"`), k);
 });
+
+test('menu na ordem pedida: Home, Sobre, Condomínios, Empresas, Soluções, Blog, Trabalhe conosco, Contato', () => {
+  const home = montarPagina('home');
+  const nav = home.split('<nav class="cab__nav"')[1].split('</nav>')[0];
+  const itens = [...nav.matchAll(/data-nav="([a-z]+)"[^>]*>([^<]+)</g)].map((m) => m[2]);
+  assert.deepEqual(itens, ['Home', 'Sobre', 'Condomínios', 'Empresas', 'Soluções', 'Blog', 'Trabalhe conosco', 'Contato']);
+  assert.doesNotMatch(nav, /Conteúdos|Portaria remota/);
+});
+
+test('portaria remota fica dentro de Soluções (migalha, destaque do menu e "Saiba mais")', () => {
+  const portaria = montarPagina('portaria');
+  assert.match(portaria, /<li><a href="\/servicos">Soluções<\/a><\/li>/);
+  assert.match(portaria, /data-nav="solucoes" aria-current="page"/);
+  assert.match(montarPagina('solucoes'), /Saiba mais →/);
+});
+
+test('home: escolha de caminho vem antes de "Mais do que abrir e fechar portas"', () => {
+  const home = montarPagina('home');
+  assert.ok(home.indexOf('id="caminhos"') > 0 && home.indexOf('id="caminhos"') < home.indexOf('id="h-valor"'));
+});
+
+test('fotos entram na proporção original e o chip de reconhecimento facial não tem preenchimento', () => {
+  assert.match(css(), /\.chip-fac \{[^}]*background: transparent[^}]*border: 1\.5px solid var\(--sinal\)/);
+  assert.match(html, /<figure class="slot tem-foto" data-slot="condominio" style="aspect-ratio:1152 \/ 864"/);
+});
