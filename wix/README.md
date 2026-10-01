@@ -4,7 +4,8 @@ O Wix não executa um projeto Vite diretamente. Por isso `npm run build` gera **
 (`dist/index.html`, ~145 KB, logo incluído, com CSS e JS embutidos). Duas formas de publicar:
 
 ## Opção A (recomendada) — Incorporar código HTML
-1. `cp .env.example .env.production` e preencha os valores; depois `npm ci && npm run build`.
+1. `npm ci && npm run build`. Abra o HTML gerado e preencha o bloco `window.EVOLUA_CONFIG` (endpoint do lead, WhatsApp,
+   política de privacidade). Alternativa: variáveis `VITE_*` em `.env.production` antes do build.
 2. No Wix Editor, crie a página da LP, adicione **Incorporar → Código HTML** (largura total da página).
 3. Cole o conteúdo de `dist/index.html`. Ajuste a altura do elemento (referência: ~1100 px desktop /
    ~1400 px mobile; o conteúdo rola dentro do elemento se passar disso). Ajuste fino no editor.

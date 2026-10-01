@@ -61,7 +61,7 @@
 
     <header class="site-header">
       <div class="wrap header-in">
-        <a class="logo" href="/" aria-label="Evolua, acesso protegido"><img src="/src/assets/logo-evolua.png" alt="Evolua – Acesso protegido" width="100" height="36" /></a>
+        <a class="logo" href="https://evoluatech.com.br/" target="_top" aria-label="Evolua, acesso protegido"><img src="/src/assets/logo-evolua.png" alt="Evolua – Acesso protegido" width="100" height="36" /></a>
         <a class="btn btn-small btn-primary" href="#diagnostico" data-start-assessment>Iniciar diagnóstico</a>
       </div>
     </header>
@@ -133,6 +133,15 @@
       </div>
     </footer>
 
+    <script>
+      // CONFIGURAÇÃO — preencha antes de publicar (ver wix/README.md).
+      window.EVOLUA_CONFIG = window.EVOLUA_CONFIG || {
+        leadEndpoint: '', // URL que recebe o lead, ex.: https://www.evoluatech.com.br/_functions/lead
+        whatsappNumber: '', // só dígitos, ex.: 5522999999999 (vazio = botão de WhatsApp oculto)
+        privacyUrl: '', // link da política de privacidade (opcional)
+        gtmId: '', // deixe vazio no Wix (o GTM fica no site; ver parent-bridge.js)
+      };
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
