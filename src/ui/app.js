@@ -378,7 +378,7 @@ export function createApp(root) {
       },
       h('p', { class: 'eyebrow' }, 'Quase lá'),
       h('h2', { tabindex: '-1', class: 'view-title' }, 'Receber minha análise completa'),
-      h('p', { class: 'lead' }, 'Informe seus dados e a Evolua envia a análise detalhada do seu condomínio.'),
+      h('p', { class: 'lead' }, 'Informe seus dados para liberar a análise completa do seu condomínio.'),
       field('name', 'Nome', { autocomplete: 'name' }),
       field('whatsapp', 'WhatsApp (com DDD)', { type: 'tel', inputmode: 'tel', autocomplete: 'tel' }),
       field('email', 'E-mail', { type: 'email', inputmode: 'email', autocomplete: 'email' }),
@@ -391,7 +391,7 @@ export function createApp(root) {
       h(
         'p',
         { class: 'fineprint' },
-        'Ao enviar, você concorda em ser contatado(a) pela Evolua sobre a análise. Não compartilhamos seus dados. ',
+        'Ao enviar, você concorda que a Evolua use seus dados para entrar em contato sobre o condomínio. Não compartilhamos seus dados. ',
         SITE.privacyUrl && h('a', { href: SITE.privacyUrl, target: '_blank', rel: 'noopener' }, 'Política de privacidade'),
       ),
       h('div', { class: 'nav' }, h('button', { class: 'btn-ghost', type: 'button', onClick: back }, '← Voltar')),

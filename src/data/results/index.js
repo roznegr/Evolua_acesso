@@ -263,6 +263,6 @@ export const ASSEMBLY_COPY = {
 };
 
 export const CONFIRMATION_COPY = {
-  title: 'Recebemos seu pedido',
-  body: 'A Evolua vai entrar em contato pelo WhatsApp informado para apresentar a análise completa.',
+  title: 'Análise liberada',
+  body: 'Confira abaixo o diagnóstico preliminar do seu condomínio.',
 };
