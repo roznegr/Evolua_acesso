@@ -24,12 +24,12 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 ## 02 · HERO [N texto + imagem; sem iframe]
 
 **Objetivo:** em 5 segundos, dizer o que a Evolua faz, para quem e qual a diferença.
-**Eyebrow:** Acesso protegido em Macaé e região
+**Eyebrow:** Acesso protegido em Macaé e Rio das Ostras
 **Headline (H1):** Evolua a sua portaria.
-**Apoio:** Reconhecimento facial, central de atendimento 24h e registro de cada acesso, para condomínios e empresas. [VALIDAR a lista de cidades antes de citar Rio das Ostras no apoio]
+**Apoio:** Reconhecimento facial, central de atendimento 24h e registro de cada acesso, para condomínios e empresas em Macaé e Rio das Ostras.
 **Chip (chamariz):** `Com reconhecimento facial`
 **CTAs:** [Quero minha análise gratuita] · [Conhecer as soluções]
-**Linha de confiança (microtexto):** Desde 2017 · Central de atendimento 24h · Macaé e região
+**Linha de confiança (microtexto):** Desde 2017 · Central de atendimento 24h · Macaé e Rio das Ostras
 **Visual:** foto grande de pessoa chegando a portão ou portaria de condomínio (sem pose, luz natural). Sobre ela, uma única camada discreta: **moldura de câmera** (cantoneiras) no rosto e **3 a 5 pontos de referência** em lima `#AFDE12`, mais a pílula `Acesso liberado` com o ponto de status. Faceta de 16° na borda inferior da imagem. Legenda pequena: "Ilustração do fluxo de acesso". Nenhuma malha, nenhum brilho, nenhuma tela de aplicativo.
 **UX:** a camada de reconhecimento aparece depois da imagem carregar (fade de 400 ms, uma vez); sem movimento contínuo; `prefers-reduced-motion` mostra estático.
 **Mobile:** imagem em proporção 4:5 acima do texto; H1 em 2 linhas; botão primário em largura total; secundário como link. A moldura mantém proporção.
@@ -40,7 +40,7 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 **Objetivo:** prova imediata e verificável.
 **Eyebrow:** A Evolua em números
 **Itens:** **+46.000** atendimentos mensais [VALIDAR] · **+7.000** usuários cadastrados · **+500.000** acessos mensais.
-**Visual:** faixa em Universo Petróleo (`#0B3954`), números em Baloo 2 800 branco, rótulos em `#A9BCC8`; um ponto lima `Status` no item de atendimentos. Fonte do dado em legenda: "Dados operacionais da Evolua". [VALIDAR período]
+**Visual:** faixa em Universo Petróleo (`#0B3954`), números em Baloo 2 800 branco, rótulos em `#A9BCC8`; um ponto lima `Status` no item de atendimentos. Fonte do dado em legenda: "Dados operacionais da Evolua, [período provisório: set/2026]" (**provisório**, ver "Conteúdo provisório").
 **UX:** contagem sobe uma vez ao entrar na tela (~900 ms); com redução de movimento, valores estáticos. Valores vêm de `facts.json` (troca em um lugar).
 **Mobile:** os três itens empilham; números 48 px; sem carrossel.
 **SEO/acessibilidade:** os mesmos números também existem como texto nativo oculto visualmente ao leitor de tela dentro do embed; sem H2 no embed (o H2 é nativo acima: "A Evolua em números").
@@ -73,9 +73,9 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 **Eyebrow:** Como funciona
 **Headline (H2):** Cada acesso passa pelo mesmo caminho.
 **Abas:** **Morador** · **Visitante**
-**Morador (3 passos):** 1 Chega ao portão ou à porta · 2 É reconhecido pelo rosto · 3 Acesso liberado conforme as regras do condomínio, com registro.
+**Morador (3 passos):** 1 Chega ao portão ou à porta · 2 É reconhecido pelo rosto (ou usa o TAG ou o controle) · 3 Acesso liberado conforme as regras do condomínio, com registro.
 **Visitante (5 passos):** 1 Chega e aciona o atendimento · 2 A central o identifica pelas câmeras · 3 A central pede autorização ao morador · 4 O morador autoriza, mesmo fora do condomínio · 5 Acesso liberado, com conversa, imagens e registro gravados.
-(Fonte: fluxo descrito hoje em `/portaria-remota`; trocar passo 1 do morador se TAG/controle continuarem [VALIDAR].)
+(Fonte: fluxo descrito hoje em `/portaria-remota`; TAG e controle continuam, confirmado pelo cliente. O reconhecimento facial é o destaque visual.)
 **Visual:** linha de 3 ou 5 nós conectados por um fio verde; o nó 2 do morador usa a moldura de câmera com o ponto lima; o último nó recebe a pílula `Registrado`. Sem tela de aplicativo.
 **UX:** ao entrar na tela, o fio se desenha em 1,2 s e cada nó acende em sequência; trocar de aba reinicia. Reduzir movimento: tudo visível e estático.
 **Mobile:** passos na vertical, fio vertical à esquerda, cada passo com título curto e uma linha.
@@ -88,9 +88,9 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 **Linhas alternadas (texto/mídia), cada uma com CTA "Conhecer a solução":**
 1. **Portaria remota** — *Problema:* portaria que depende de turnos e de controle manual. *Solução:* central da Evolua na mesma cidade, supervisionada 24h, que atende visitantes e entregadores com conversa, imagens e registro gravados. *Benefício:* mais controle e mais segurança sem depender de uma equipe de plantão no condomínio. → `/portaria-remota`
 2. **Controle de acesso** — *Problema:* não saber quem entrou e quando. *Solução:* Evolua Access, com gestão por cloud e monitoramento de eventos (arrombamento, pânico, porta que não fechou, emergência). *Benefício:* histórico de acessos e alerta em tempo real. → `/acesso`
-3. **App Evolua** — *Problema:* depender de chaves e de ligação para liberar visitas. *Solução:* aplicativo exclusivo da Evolua para acompanhar acessos. *Benefício:* [lista de funções do app a confirmar com a operação] → `/app-evolua`
+3. **App Evolua** — *Problema:* depender de chaves e de ligação para liberar visitas. *Solução:* aplicativo exclusivo da Evolua para acompanhar e autorizar acessos. *Benefício (provisório):* convites de visita com dia e horário, linha do tempo de acessos, mural de recados, imagens das câmeras da portaria e gestão de usuários. → `/app-evolua`
 4. **Evolua Loker** — *Problema:* encomendas sem controle. *Solução:* armário inteligente que recebe as encomendas, com aviso ao morador pelo app. *Benefício:* entrega segura e retirada organizada. [retirada sem QR a validar] → `/evolua-loker`
-5. **Automação** [VALIDAR se continua] — rotinas do condomínio integradas à portaria. → `/automacao`
+5. **Automação** (continua, confirmado pelo cliente; sem nome de fornecedor) — *Problema:* rotinas do condomínio que dependem de zelador ou porteiro. *Solução:* módulo de automação integrado à portaria (bomba d'água, nível da caixa d'água, área das lixeiras, exaustor da churrasqueira). *Benefício:* o síndico acompanha tudo no aplicativo. → `/automacao`
 **Visual:** mídia em foto/slot ou vídeo curto sem marca de terceiros [conferir vídeos]; nunca ícone isolado. Fundo alterna Claro/Broto.
 **UX:** cada linha revela ao rolar; hover no card destaca o CTA; envia `solution_view` com o nome da solução.
 **Mobile:** mídia sobre o texto, uma solução por tela, CTA em largura total.
@@ -127,7 +127,7 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 **Objetivo:** quem somos, onde atuamos, o que fazemos, por que existimos, em poucas linhas.
 **Eyebrow:** Sobre a Evolua
 **Headline (H2):** Acesso protegido desde 2017.
-**Texto:** A Evolua atua com portaria remota e controle de acesso para condomínios e empresas em Macaé e região. Nosso propósito é melhorar a segurança, a convivência e a qualidade de vida de moradores e colaboradores, com tecnologia e atendimento próximo. [VALIDAR: onde mais atua]
+**Texto:** A Evolua atua com portaria remota e controle de acesso para condomínios e empresas em Macaé e Rio das Ostras. Nosso propósito é melhorar a segurança, a convivência e a qualidade de vida de moradores e colaboradores, com tecnologia e atendimento próximo.
 **CTA (link):** Conheça a Evolua → `/qualidade`
 **Visual:** texto à esquerda, foto da central ou da fachada à direita (slot). Sem menção ao Grupo.
 **Mobile:** coluna única.
@@ -146,12 +146,10 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 **Objetivo:** resposta direta para pessoas e mecanismos de resposta.
 **Headline (H2):** Perguntas frequentes
 1. **O que é portaria remota?** É o atendimento da portaria feito por uma central de monitoramento, que recebe visitantes e entregadores pelas câmeras e interfone, consulta o morador e libera o acesso, com tudo registrado.
-2. **Como funciona o reconhecimento facial?** [resposta curta a validar com a operação: quem é cadastrado, como o cadastro é feito, o que acontece quando o rosto não é reconhecido] O acesso segue as regras definidas por cada condomínio ou empresa.
-3. **Como o visitante entra?** Ele aciona o atendimento, a central o identifica, pede autorização ao morador e só então libera a entrada.
-4. **E se faltar energia?** A solução conta com bancos de bateria para manter portões, comunicação e sistemas de emergência funcionando, e a central acompanha a autonomia em tempo real.
-5. **E se a conexão cair?** [VALIDAR a afirmação "não usamos internet" antes de publicar; resposta a reescrever]
-6. **Como o morador pede ajuda em situação de risco?** Pelo botão de pânico silencioso, que aciona a central e a segurança local. [VALIDAR dispositivos atuais]
-(O texto final exclui afirmações pendentes; só as respostas validadas entram no schema.)
+2. **Como o visitante entra?** Ele aciona o atendimento, a central o identifica, pede autorização ao morador e só então libera a entrada.
+3. **E se faltar energia?** A solução conta com bancos de bateria para manter portões, comunicação e sistemas de emergência funcionando, e a central acompanha a autonomia em tempo real.
+4. **Como o morador pede ajuda em situação de risco?** Pelo botão de pânico silencioso, disponível no aplicativo, no TAG e no controle, que aciona a central e a segurança local.
+(Decisão do cliente em 01/10: as perguntas sobre detalhes do reconhecimento facial e sobre queda de conexão **ficam fora por ora**. O FAQ da home tem 4 perguntas.)
 **Visual:** acordeão semântico (`details/summary`), um aberto por padrão.
 **Mobile:** largura total, alvos de 48 px.
 
@@ -184,9 +182,22 @@ Regras aplicadas em todo o texto: sem percentual de economia, sem Kiper, sem QR 
 ## Schema da home
 `LocalBusiness` (mantido, com telefone/endereço idênticos ao Google Meu Negócio), `Organization`, `WebSite`, `FAQPage` (somente com as respostas validadas), `BreadcrumbList` nas páginas internas.
 
-## Pendências para fechar a Fase C
-1. Respostas do FAQ marcadas [VALIDAR] (reconhecimento facial, conexão, pânico).
-2. Funções reais do app novo e nome oficial.
-3. Se a automação continua; se TAG/controle continuam.
-4. Cidades a citar além de Macaé.
-5. Período e fonte dos indicadores.
+## Conteúdo provisório (marcado para troca)
+
+Por decisão do cliente (01/10), os itens abaixo entram com texto **provisório**, que será substituído quando a Evolua passar as informações. Ficam no arquivo de dados com `provisorio: true`; uma verificação no build lista o que ainda é provisório e **bloqueia a publicação em produção** enquanto houver item pendente (ou exige confirmação explícita).
+
+| Item | Texto provisório | Troca por |
+|---|---|---|
+| Nome do app | **App Evolua** (definitivo) | |
+| Funções do app (card e `/app-evolua`) | convites de visita com dia e horário, linha do tempo de acessos, mural de recados, imagens das câmeras da portaria, gestão de usuários (derivado do que o site publica hoje, sem QR code) | lista real do app novo |
+| Período/fonte dos indicadores | "Dados operacionais da Evolua, set/2026" | período e fonte reais |
+| Telas do app | sem imagem de tela; ilustração neutra | capturas reais do app novo |
+| Retirada no Loker | "o morador é avisado pelo app e retira a encomenda" | fluxo real sem QR code |
+
+Confirmados pelo cliente nesta rodada: TAG e controle veicular continuam; automação continua; Rio das Ostras é cidade atendida; reconhecimento facial e queda de conexão fora do FAQ por ora.
+
+## Pendências
+1. Lista real das funções do app novo, capturas de tela e links das lojas.
+2. Período e fonte dos indicadores.
+3. Fluxo de retirada no Evolua Loker sem QR code.
+4. Cidades além de Macaé e Rio das Ostras (Rio de Janeiro e Belo Horizonte só com prova de atuação).
