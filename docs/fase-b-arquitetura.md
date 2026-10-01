@@ -37,7 +37,7 @@ URLs existentes são **preservadas** (zero perda de SEO). Só muda o conteúdo, 
 | `/app-evolua` | app | App Evolua | MANTER + refinar |
 | `/evolua-loker` | armários | Evolua Loker | MANTER + refinar |
 | `/qualidade` | missão e qualidade | **Sobre** (rótulo novo, URL mantida) | REORGANIZAR |
-| `/diagnostico-acesso` | LP do diagnóstico | CTA secundário de Condomínios | MANTER |
+| `/diagnostico-acesso` | LP do diagnóstico | **MVP do Motor 4** (Análise de Segurança Condominial): principal destino de conversão de Condomínios | MANTER |
 | `/blog` + 2 posts | genérico | **Conteúdos** (arquitetura em §6) | MELHORAR |
 | `/contato` | formulário | contato + análise | MELHORAR |
 | `/trabalhe-conosco`, `/politica-de-privacidade` | menu | **rodapé** | REORGANIZAR |
@@ -53,11 +53,11 @@ Menu atual: 12 itens em até 3 níveis (HOME, Sobre, Nossos Indicadores, PORTARI
 
 **Proposto (sticky, um nível, 6 itens + CTA):**
 
-`Logo` · Soluções · Condomínios · Empresas · Sobre · Conteúdos · Contato · **[Evolua a sua portaria]**
+`Logo` · Soluções · Condomínios · Empresas · Sobre · Conteúdos · Contato · **[Quero minha análise gratuita]**
 
 - *Soluções* abre um submenu curto: Portaria remota · Controle de acesso · App Evolua · Evolua Loker · Automação.
 - "Login" **removido** do menu (decisão do cliente, 01/10).
-- Telefone/WhatsApp fixos: no mobile, botão flutuante de WhatsApp (mantém a conversão de Ads já configurada).
+- WhatsApp = o próprio telefone fixo, (22) 2142-6561 (confirmado pelo cliente). No mobile, botão de WhatsApp **discreto** (pílula pequena, cores do DS), para não competir com a marca.
 - Footer: Evolua · Soluções · Condomínios · Empresas · Conteúdos · Contato · Trabalhe conosco · Política de Privacidade · telefone · e-mail · endereço · redes.
 
 ## 4. Home — estrutura (ATUAL → PROPOSTO)
@@ -84,13 +84,15 @@ Menu atual: 12 itens em até 3 níveis (HOME, Sobre, Nossos Indicadores, PORTARI
 **Condomínio (síndico, conselho, morador):** Home → Condomínios → (como funciona · custos · app · loker) → CTA "Evolua a sua portaria" → formulário/WhatsApp. Atalho secundário: **Diagnóstico de acesso** (captura qualificada, já existente).
 **Empresa (gestor, RH, facilities):** Home → Empresas → (registro de colaboradores, visitantes, prestadores, relatórios) → "Evolua a sua portaria" → formulário/WhatsApp.
 
-**CTAs (dois, consistentes):**
-- **Primário:** *Evolua a sua portaria* → formulário curto ou WhatsApp. (Difere do brief original, que sugeria "Conheça nossas soluções" como primário: um CTA de exploração no topo enfraquece a conversão; "Conheça as soluções" fica como secundário, ancorado.)
-- **Secundário:** *Conheça as soluções* (navegação) e, em Condomínios, *Faça o diagnóstico* (gratuito).
+**CTAs (dois, consistentes) — revisado em 01/10:**
+- **Marca:** *Evolua a sua portaria* é o título e a assinatura, não o botão.
+- **Primário (botão em todo o site):** *Quero minha análise gratuita* → `/diagnostico-acesso` (MVP do Motor 4) em Condomínios; em Empresas, o mesmo rótulo leva a um formulário de análise de acessos [VALIDAR se a análise gratuita existe para empresas; senão, "Falar com um especialista"].
+- **Secundário:** *Conhecer as soluções* (navegação por âncora) e o WhatsApp como contato direto.
+- O objetivo do funil condominial é armar o síndico para levar a decisão à assembleia (kit de apresentação como entrega pós-formulário).
 
 **Formulário:** Nome · Condomínio/Empresa · WhatsApp · E-mail · Tipo (Condomínio/Empresa). Cinco campos no máximo; endpoint compatível com marketing/CRM (Velo, Make ou Zapier).
 
-**Eventos de tracking** (sobre o GTM `GTM-MN8N8BZ` existente; nada de IDs novos): `cta_whatsapp` (mantém a conversão Google Ads atual), `cta_contact`, `form_start`, `form_submit`, `solution_view`, `condominio_view`, `empresa_view`; UTMs preservadas nos links internos.
+**Eventos de tracking** (sobre o GTM `GTM-MN8N8BZ` existente; nada de IDs novos). Alinhados aos nomes que o time já definiu: `page_view`, `generate_lead` (único evento-chave), `file_download` (kit para assembleia), `contact_click` (WhatsApp/telefone); e, para o site novo, `form_start`, `solution_view`, `condominio_view`, `empresa_view`. UTMs preservadas nos links internos. A conta de Google Ads está cancelada: não depender do evento de conversão antigo de WhatsApp. Antes de ligar mídia paga, conferir os eventos na propriedade GA4 da Evolua.
 
 ## 6. Conteúdo e SEO/AEO
 
@@ -112,10 +114,10 @@ Todos em **um único arquivo de dados** (`data/facts.json`) com flag `validar: t
 
 | Dado | Valor mantido | Observação |
 |---|---|---|
-| Atendimentos mensais | +46.000 (indicadores) | o "17.000" do texto Sobre sai do texto; pendente validar |
-| Usuários cadastrados | +7.000 | |
-| Acessos mensais | +500.000 | |
-| Economia | "até 40%" (Condomínios/Empresas) e "até 50%" (pilar) | mantidos como estão; economia é benefício **secundário**, nunca o título |
+| Atendimentos mensais | +46.000 (indicadores) | **mantido por decisão do cliente (01/10)**; o "17.000" do texto Sobre sai do texto; [VALIDAR] enquanto houver divergência interna |
+| Usuários cadastrados | +7.000 | mantido |
+| Acessos mensais | +500.000 | mantido |
+| Economia | **sem percentual** | decisão do cliente (01/10): nenhum número de economia sem validação do Comercial. "Até 40%/50%" sai de textos e meta descriptions; usar linguagem qualitativa; sem calculadora por ora |
 | Início | "desde 2017" | (cadastro e DS) em vez de "mais de 4 anos" |
 | Contato | (22) 2142-6561 · comercial@evoluatech.com.br · endereço atual | |
 
@@ -132,6 +134,19 @@ Tratamento visual (mantido, para não virar o clichê "hacker/futurista"):
 - Traduzida no vocabulário do DS: **moldura de câmera** (cantoneiras) e **poucos pontos de referência** em lima (`evolua-sinal`) sobre petróleo, com pílula de status ("acesso liberado") — sem malha completa, sem rosto verde-neon, sem brilho.
 - Foto de pessoa real (banco de imagem por ora), natural e sem pose.
 - Texto: "reconhecimento facial" pode ser dito com clareza; detalhes técnicos só após validação.
+- **Chamariz (decisão de 01/10):** o reconhecimento facial é o principal gancho de atenção da home e de Condomínios. A funcionalidade está em uso real (a própria equipe trabalha em um prédio atendido pela Evolua com reconhecimento facial).
+- Regras de copy: não prometer entrada automática (o acesso segue as regras de cada condomínio); não inventar funcionalidades do app; dado técnico da equipe nunca aparece como fala de cliente.
+
+## 9.1 Regras permanentes de conteúdo (revisão 01/10)
+
+- Nenhuma menção a Kiper; **conferir os vídeos de benefícios de `/portaria-remota`** antes de reaproveitá-los.
+- Co-branding: sem Hinfoluz nem "Grupo" na home, em Condomínios e no rodapé. Remover o link do rodapé e o "Empresa do Grupo… mais de 10 anos" de `/qualidade`. Em Empresas, só com validação do Comercial.
+- Não expor a lógica interna das modalidades de portaria.
+- Tamanho do condomínio não segmenta o conteúdo.
+- Cidades: páginas locais de Macaé e Rio das Ostras; Rio de Janeiro e Belo Horizonte só com prova de atuação [VALIDAR].
+- Prioridade de SEO: `/app-evolua` (título, descrição e botões das lojas do app novo, white label com a logo da Evolua); endereço e telefone idênticos ao perfil do Google Meu Negócio.
+- Blog refeito com resposta direta no início, FAQ, links internos e dúvidas reais de síndicos. Primeiro tema sugerido: "Portaria remota é segura se a internet cair?" (exige validar a afirmação do site de que "não usamos internet").
+- Automação (`/automacao`): [VALIDAR se o módulo continua depois da descontinuação da Kiper] antes de manter a página e o card.
 
 ## 10. Fotografia temporária (banco de imagem)
 
