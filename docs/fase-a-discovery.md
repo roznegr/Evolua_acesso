@@ -1,6 +1,6 @@
 # Fase A — Discovery (renovação evolutiva do site Evolua)
 
-Fontes: site publicado (coletado em 01/10/2026 via HTTP), Design System "Evolua Editorial", repositório. **Referência GARD: não analisada** (Behance respondeu 429 a acesso automatizado; ver §7).
+Fontes: site publicado (coletado em 01/10/2026 via HTTP), Design System "Evolua Editorial", repositório e print da página da GARD enviado pelo usuário.
 
 ## 1. Tecnologia e infraestrutura atuais
 
@@ -106,9 +106,39 @@ Menu atual: HOME · Sobre · Nossos Indicadores · PORTARIA REMOTA (O que é? / 
 (Ver resumo no relatório da sessão.) Principais pontos: Claro 40% / Petróleo 30% / Verde 20%; Baloo 2 + Nunito Sans; faceta de 16°, moldura de câmera, pílula de status; raios 12/24/48/pill; fotografia real da central e da equipe; sem números inventados. Lacunas: tokens de web (breakpoints, container, botões, formulários, foco) não existem.
 O repositório já tem uma paleta própria (`src/styles/main.css`: areia/argila, `#78bc00`, sem petróleo) que **diverge** do DS e deve ser alinhada.
 
-## 7. Referência GARD
+## 7. Referência GARD (análise do print enviado pelo usuário)
 
-Não analisada. `behance.net` devolve 429 a clientes automatizados mesmo com o proxy liberado; não vou contornar o bloqueio. Alternativas: prints/PDF da galeria, ou o texto de cada módulo. O que o DS já registrou sobre referências de portaria virtual (guia `10-referencias.md`) segue valendo.
+O Behance e o site da GARD não são acessíveis deste ambiente (429 / política de rede); a análise vem do print de página inteira (baixa resolução: textos pequenos podem estar imprecisos).
+
+**Estrutura, de cima para baixo**
+1. Hero escuro: título em 3 linhas com a palavra-chave em verde, subtítulo curto, CTA único, rosto com malha biométrica e chip "Autorizado" sobreposto.
+2. Faixa de prova com 3 colunas (selo "10 anos", prédio, chip), em ícone + frase.
+3. "Serviços especializados": 4 linhas alternadas texto/mídia (Portaria Remota, Portaria Local Inteligente, Portaria Autônoma, Armários Inteligentes), cada uma com título, parágrafo, CTA e miniaturas de vídeo ou foto.
+4. "Tudo em um app": lista de funcionalidades em linhas finas ao lado de celulares e relógio em recortes circulares.
+5. "Por que escolher": 3 argumentos curtos (sem investimento inicial, biometria facial, assistência 24h).
+6. "Onde estamos": mapa com 3 números (cidades, condomínios, moradores).
+7. Formulário curto (nome, e-mail, telefone) sobre foto de celular; rodapé enxuto.
+
+**O que funciona (aprender)**
+- Ritmo: alternância de fundo escuro/claro com divisores orgânicos e de lado do texto/mídia nas soluções; a página nunca repete a mesma composição duas vezes seguidas.
+- Um único CTA, com o mesmo texto em todas as seções ("Quero a GARD no meu condomínio"): consistência de conversão.
+- Faixa de prova logo após o hero e um bloco de números com contexto geográfico.
+- Cada solução tem mídia própria (vídeo/foto) e uma ação, em vez de só ícone + parágrafo.
+- Formulário com 3 campos.
+- Fluxo de storytelling simples: promessa → prova → serviços → app → razões → alcance → ação.
+
+**O que NÃO aproveitar (conflita com o brief e o DS)**
+- Visual neon sobre preto com malha facial: é o "futurista sem função" e o cliché de reconhecimento facial que o brief proíbe; o DS também desaconselha fundo escuro dominante e rede de pontos.
+- Chip "Autorizado" sobre a foto do rosto: UI fictícia decorativa.
+- Texto corrido pequeno e de baixo contraste sobre verde-escuro (fere os critérios de acessibilidade do DS).
+- Banco de imagem de pessoas sorrindo; selo "10 anos de liderança" e números sem fonte (a Evolua só pode usar números validados).
+- Identidade (verde-água, tipografia condensada, ícones, textos): não copiar.
+
+**Tradução para a Evolua (hipótese para a Fase B)**
+- Mesmo ritmo e mesma lógica de seções, em Claro + Petróleo + Verde do DS, com foto real da central e da equipe.
+- Solução em linhas alternadas (problema → solução → benefício) com mídia real ou slot de foto.
+- Faixa de indicadores após o hero (números só após validação) e CTA único repetido.
+- Fluxo do visitante representado com faceta, moldura de câmera e pílula de status, sem rosto com malha biométrica e sem app fictício.
 
 ## 8. Oportunidades
 
