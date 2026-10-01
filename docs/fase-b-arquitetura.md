@@ -45,7 +45,7 @@ URLs existentes são **preservadas** (zero perda de SEO). Só muda o conteúdo, 
 | Solid Invent, PPA, Zelo | em `/servicos` | removidos | REMOVER |
 | Depoimentos, equipe, "Kiper" | espalhados | removidos até haver registro | REMOVER |
 
-Páginas novas (opcionais, fase posterior): `/portaria-remota-em-macae`, `/controle-de-acesso-em-macae` (landing local com conteúdo útil, sem keyword stuffing); categorias do blog.
+**Páginas locais novas (aprovadas):** `/portaria-remota-em-macae`, `/controle-de-acesso-em-macae`, `/seguranca-condominial-em-macae` (conteúdo útil e específico da cidade e região, sem keyword stuffing; linkadas a partir de Condomínios, Empresas e rodapé); categorias do blog. Bairros e municípios de atuação a confirmar com a Evolua antes de citar [VALIDAR].
 
 ## 3. Header e navegação
 
@@ -56,7 +56,7 @@ Menu atual: 12 itens em até 3 níveis (HOME, Sobre, Nossos Indicadores, PORTARI
 `Logo` · Soluções · Condomínios · Empresas · Sobre · Conteúdos · Contato · **[Evolua a sua portaria]**
 
 - *Soluções* abre um submenu curto: Portaria remota · Controle de acesso · App Evolua · Evolua Loker · Automação.
-- "Login" (área do cliente) é mantido em posição discreta se for um link que funciona [VALIDAR para onde aponta].
+- "Login" **removido** do menu (decisão do cliente, 01/10).
 - Telefone/WhatsApp fixos: no mobile, botão flutuante de WhatsApp (mantém a conversão de Ads já configurada).
 - Footer: Evolua · Soluções · Condomínios · Empresas · Conteúdos · Contato · Trabalhe conosco · Política de Privacidade · telefone · e-mail · endereço · redes.
 
@@ -119,13 +119,19 @@ Todos em **um único arquivo de dados** (`data/facts.json`) com flag `validar: t
 | Início | "desde 2017" | (cadastro e DS) em vez de "mais de 4 anos" |
 | Contato | (22) 2142-6561 · comercial@evoluatech.com.br · endereço atual | |
 
-## 9. Leitura facial como motivo visual
+## 9. Reconhecimento facial
 
-Permitido pelo cliente, com limites para não virar o clichê "hacker/futurista":
+**Decisão do cliente (01/10):** os sistemas da Evolua **têm reconhecimento facial** e **não trabalham mais com QR code**. Consequências:
+- O reconhecimento facial passa a ser **funcionalidade real e protagonista** do fluxo de acesso e do hero (não só metáfora visual).
+- **QR code sai de todo o conteúdo**: convites por QR, "237 bilhões de combinações", Evolua Loker com retirada por QR, app "substitui o molho de chaves por QR Code". Os textos dessas páginas serão reescritos para o fluxo atual [VALIDAR com a operação: como o morador, o visitante e o prestador se cadastram e são reconhecidos; como funciona o convite de visitante sem QR; como o Loker libera a retirada].
+- TAG e controle veicular: **não confirmados**; só entram se a Evolua confirmar que continuam.
+- Evitar promessas técnicas não verificadas (precisão, tempo de reconhecimento, "100% seguro"), e tratar a imagem facial com cuidado de LGPD no texto de privacidade [VALIDAR com o jurídico: base legal e política de dados biométricos].
+
+Tratamento visual (mantido, para não virar o clichê "hacker/futurista"):
 - **Uma** composição por página, só no hero ou no fluxo "Reconhecimento".
 - Traduzida no vocabulário do DS: **moldura de câmera** (cantoneiras) e **poucos pontos de referência** em lima (`evolua-sinal`) sobre petróleo, com pílula de status ("acesso liberado") — sem malha completa, sem rosto verde-neon, sem brilho.
 - Foto de pessoa real (banco de imagem por ora), natural e sem pose.
-- **Não afirmar** que a Evolua faz reconhecimento facial até validar: o site atual descreve QR code, TAG, controle veicular e app, e menciona biometria só em texto genérico do blog. O texto fala em "identificação" e "autorização" [VALIDAR].
+- Texto: "reconhecimento facial" pode ser dito com clareza; detalhes técnicos só após validação.
 
 ## 10. Fotografia temporária (banco de imagem)
 
@@ -133,8 +139,11 @@ Critério para escolher e depois substituir: cenas reais de chegada, portão, po
 
 ## 11. Pendências
 
-1. Aprovar a arquitetura em camadas (§1) e o CTA primário "Evolua a sua portaria" (§5).
-2. Para onde aponta o "Login" do menu atual.
-3. Se o app nas lojas usa a marca do fornecedor.
-4. Confirmar o texto "identificação" × "reconhecimento facial".
-5. Quais URLs locais novas criar (§2).
+Resolvidas em 01/10: arquitetura em camadas aprovada; "Login" removido; app novo **white label com a logo da Evolua** (nada de marca de fornecedor; links das lojas e nome oficial do app a informar); reconhecimento facial confirmado e QR code descontinuado; páginas locais aprovadas.
+
+Em aberto:
+1. Nome oficial, links das lojas (Google Play / App Store) e funcionalidades atuais do app novo.
+2. Como funciona hoje o cadastro e o convite de visitante e prestador, e a retirada no Loker, sem QR.
+3. TAG e controle veicular continuam?
+4. Política de privacidade atualizada para dado biométrico (jurídico).
+5. Bairros/cidades atendidos para as páginas locais.
