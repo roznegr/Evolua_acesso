@@ -242,7 +242,7 @@ export function createApp(root) {
     return h(
       'div',
       { class: 'card-body' },
-      h('p', { class: 'eyebrow' }, 'Diagnóstico guiado · cerca de 2 minutos'),
+      h('p', { class: 'eyebrow' }, 'Diagnóstico gratuito · cerca de 2 minutos'),
       h('h2', { tabindex: '-1', class: 'view-title' }, 'Entenda como o acesso do seu condomínio funciona hoje'),
       h('p', { class: 'lead' }, `São ${TOTAL} perguntas rápidas, uma por vez. Ao final você recebe um diagnóstico preliminar e pode preparar a conversa com conselho e assembleia.`),
       h('button', { class: 'btn btn-primary btn-lg', type: 'button', onClick: start }, resuming ? 'Continuar diagnóstico' : 'Iniciar diagnóstico'),
