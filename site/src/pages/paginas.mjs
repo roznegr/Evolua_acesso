@@ -56,10 +56,7 @@ export function home(ctx) {
           <dd class="numero" data-contar="${i.valor}">+${new Intl.NumberFormat('pt-BR').format(i.valor)}</dd>
         </div>`).join('');
   const fonte = ctx.facts.indicadores.fonte;
-  return `
-<section class="secao hero" data-universo="grafite" aria-labelledby="h1-home">
-  <div class="container hero__in">
-    <div class="hero__txt">
+  const textoHero = `
       <p class="rotulo">Acesso protegido em ${ctx.cidades}</p>
       <span class="chip-fac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M9 10v1M15 10v1M9.5 15c1.5 1.2 3.5 1.2 5 0"/></svg>Com reconhecimento facial</span>
       <h1 class="t1" id="h1-home">Evolua <strong>a sua portaria.</strong></h1>
@@ -68,18 +65,27 @@ export function home(ctx) {
         <a class="btn btn--primario" href="${ctx.href('contato')}" data-evento="contact_click" data-metodo="cta_hero">${CTA} <span class="seta" aria-hidden="true">→</span></a>
         <a class="btn btn--secundario" ${ctx.rolar('caminhos')}>Escolher meu caminho</a>
       </div>
-      <ul class="hero__conf legenda"><li>Desde ${e.desde}</li><li>Central de atendimento 24h</li><li>${ctx.cidades}</li></ul>
+      <ul class="hero__conf legenda"><li>Desde ${e.desde}</li><li>Central de atendimento 24h</li><li>${ctx.cidades}</li></ul>`;
+  const hero = temFoto ? `
+<section class="secao hero hero--foto" data-universo="grafite" aria-labelledby="h1-home">
+  <div class="container hero__in"><div class="hero__txt">${textoHero}
+    </div></div>
+  <img class="hero__foto" src="${ctx.fotos.hero}" alt="Pessoa sorrindo sendo reconhecida por reconhecimento facial na entrada" decoding="async">
+  <span class="hero__legenda">Imagem ilustrativa</span>
+</section>` : `
+<section class="secao hero" data-universo="grafite" aria-labelledby="h1-home">
+  <div class="container hero__in">
+    <div class="hero__txt">${textoHero}
     </div>
-    <div class="hero__media${temFoto ? ' hero__media--foto' : ''}" data-universo="petroleo">
-      ${temFoto
-        ? foto(ctx, 'hero', 'pessoa sendo reconhecida na entrada de um condomínio', { alt: 'Pessoa sorrindo sendo reconhecida por reconhecimento facial na entrada' })
-        : `<div class="slot" data-slot="hero" data-rotulo="Foto provisória: pessoa chegando ao portão de um condomínio (4:5). Será trocada por foto real."></div>
+    <div class="hero__media" data-universo="petroleo">
+      <div class="slot" data-slot="hero" data-rotulo="Foto provisória: pessoa chegando ao portão de um condomínio (4:5). Será trocada por foto real."></div>
       <div class="moldura" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <span class="ponto-ref" aria-hidden="true"></span><span class="ponto-ref" aria-hidden="true"></span><span class="ponto-ref" aria-hidden="true"></span><span class="ponto-ref" aria-hidden="true"></span><span class="ponto-ref" aria-hidden="true"></span>
-      <span class="status">Acesso liberado</span><span class="legenda">Ilustração do fluxo de acesso</span>`}
+      <span class="status">Acesso liberado</span><span class="legenda">Ilustração do fluxo de acesso</span>
     </div>
   </div>
-</section>
+</section>`;
+  return `${hero}
 
 <section class="secao ind" data-universo="claro" aria-labelledby="h-ind">
   <div class="container">

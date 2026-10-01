@@ -16,6 +16,10 @@
   /* Cores novas (web), contraste verificado na Fase D */
   --verde-hover: #8ccb1a;
   --erro: #b3261e;
+  /* Fundo do hero com foto: continua a cor de borda da foto para a imagem dissolver nele */
+  --foto-topo: #002340;
+  --foto-meio: #013a52;
+  --foto-base: #03203f;
 
   /* Tipografia */
   --fonte-titulo: "Baloo 2", "Nunito", "Segoe UI", Arial, sans-serif;
