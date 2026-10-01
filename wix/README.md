@@ -1,7 +1,7 @@
 # Publicar no Wix (evoluatech.com.br)
 
 O Wix não executa um projeto Vite diretamente. Por isso `npm run build` gera **um único arquivo**
-(`dist/index.html`, ~55 KB, com CSS e JS embutidos). Duas formas de publicar:
+(`dist/index.html`, ~145 KB, logo incluído, com CSS e JS embutidos). Duas formas de publicar:
 
 ## Opção A (recomendada) — Incorporar código HTML
 1. `cp .env.example .env.production` e preencha os valores; depois `npm ci && npm run build`.
