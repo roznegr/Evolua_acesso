@@ -3,10 +3,15 @@
 // Uso: node scripts/build-site.mjs [--producao] [--aceitar-provisorio]
 //  - sem flags: gera dist/preview/home.html e dist/artifact/home.html (marcando o que é provisório)
 //  - --producao: falha se houver conteúdo provisório, salvo --aceitar-provisorio
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderHome } from '../site/src/pages/home.mjs';
+import { corpoPrototipo, corpoPagina } from '../site/src/pages/layout.mjs';
+import { criarCtx } from '../site/src/pages/comp.mjs';
+import { ROTAS } from '../site/src/pages/rotas.mjs';
+import { ORDEM } from '../site/src/pages/paginas.mjs';
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ler = (p) => readFileSync(join(raiz, p), 'utf8');
@@ -32,37 +37,79 @@ export function css() {
   return ['site/src/css/tokens.css', 'site/src/css/base.css', 'site/src/css/secoes.css'].map(ler).join('\n');
 }
 
-export function montar({ sabor }) {
+const fontesGoogle = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500..800&family=Nunito+Sans:wght@400..800&display=swap">';
+const fontesLocais = '<style>@font-face{font-family:"Baloo 2";font-weight:500 800;font-display:swap;src:url(../../fonts/baloo-2-latin.woff2) format("woff2")}@font-face{font-family:"Nunito Sans";font-weight:400 800;font-display:swap;src:url(../../fonts/nunito-sans-latin.woff2) format("woff2")}</style>';
+
+// Fotos aprovadas em site/assets/fotos/<slot>.(webp|jpg|png): reduzidas e incorporadas. Sem arquivo, o slot fica reservado.
+export function carregarFotos() {
+  const dir = join(raiz, 'site/assets/fotos');
+  const fotos = {};
+  if (!existsSync(dir)) return fotos;
+  for (const nome of readdirSync(dir)) {
+    const m = nome.match(/^([a-z0-9-]+)\.(webp|jpe?g|png)$/i);
+    if (!m) continue;
+    const saida = join(tmpdir(), `evolua-foto-${m[1]}.webp`);
+    try {
+      execFileSync('convert', [join(dir, nome), '-resize', '1400x1400>', '-strip', '-quality', '78', saida], { stdio: 'pipe' });
+      fotos[m[1]] = `data:image/webp;base64,${readFileSync(saida).toString('base64')}`;
+    } catch { console.warn(`foto ignorada (falha ao converter): ${nome}`); }
+  }
+  return fotos;
+}
+
+function contexto(sabor) {
   const facts = JSON.parse(ler('site/data/facts.json'));
   const logoPng = join(raiz, 'src/assets/logo-evolua.png');
   const logo = existsSync(logoPng) ? `data:image/png;base64,${readFileSync(logoPng).toString('base64')}` : '';
-  const marcar = sabor !== 'producao';
-  const corpo = renderHome(facts, { marcar, logo, links: sabor === 'producao' ? 'site' : 'ancora' });
+  return criarCtx(facts, { marcar: sabor !== 'producao', modo: sabor === 'producao' ? 'site' : 'prototipo', logo, fotos: carregarFotos() });
+}
+
+const AVISO = '<aside class="proto" role="note"><span><strong>Protótipo para validação.</strong> Fotos sem arquivo são espaços reservados.</span><span>Conteúdo <mark>provisório</mark> aparece com contorno tracejado.</span><span>Formulários em simulação.</span></aside>';
+
+// Protótipo navegável (arquivo único) em dois sabores: 'preview' (documento completo) e 'artifact' (fragmento).
+export function montar({ sabor }) {
+  const ctx = contexto(sabor);
   const js = ler('site/src/js/site.js');
-  const cfg = sabor === 'producao' ? '' : '<script>window.EVOLUA_CONFIG={mock:true};</script>';
-  const aviso = marcar
-    ? '<aside class="proto" role="note"><span><strong>Protótipo para validação.</strong> Fotos são espaços reservados.</span><span>Conteúdo <mark>provisório</mark> aparece com contorno tracejado.</span><span>Formulário em simulação.</span></aside>'
-    : '';
-  const fontesGoogle = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500..800&family=Nunito+Sans:wght@400..800&display=swap">';
-  const fontesLocais = '<style>@font-face{font-family:"Baloo 2";font-weight:500 800;font-display:swap;src:url(../../fonts/baloo-2-latin.woff2) format("woff2")}@font-face{font-family:"Nunito Sans";font-weight:400 800;font-display:swap;src:url(../../fonts/nunito-sans-latin.woff2) format("woff2")}</style>';
-  const titulo = 'Evolua Acesso Protegido | Portaria Remota e Reconhecimento Facial em Macaé, RJ';
-  const desc = 'Portaria remota 24h, controle de acesso e reconhecimento facial para condomínios e empresas em Macaé e Rio das Ostras. Peça uma análise gratuita do acesso do seu condomínio.';
-  if (sabor === 'artifact') return `<title>Home Evolua</title>\n${fontesGoogle}\n<style>${css()}</style>\n${corpo}\n${aviso}\n${cfg}\n<script>${js}</script>\n`;
-  const fontes = sabor === 'producao' ? fontesGoogle : fontesLocais;
+  const corpo = corpoPrototipo(ctx);
+  const cfg = '<script>window.EVOLUA_CONFIG={mock:true};</script>';
+  if (sabor === 'artifact') return `<title>Site Evolua</title>\n${fontesGoogle}\n<style>${css()}</style>\n${corpo}\n${AVISO}\n${cfg}\n<script>${js}</script>\n`;
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${titulo}</title>
-<meta name="description" content="${desc}">
-${fontes}
+<title>${ROTAS.home.titulo}</title>
+<meta name="description" content="${ROTAS.home.desc}">
+${fontesLocais}
 <style>${css()}</style>
 </head>
 <body>
 ${corpo}
-${aviso}
+${AVISO}
 ${cfg}
+<script>${js}</script>
+</body>
+</html>
+`;
+}
+
+// Site real: um arquivo HTML por página, com title, descrição e canonical próprios.
+export function montarPagina(k, ctx = contexto('producao')) {
+  const r = ROTAS[k];
+  const js = ler('site/src/js/site.js');
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${r.titulo}</title>
+<meta name="description" content="${r.desc}">
+<link rel="canonical" href="https://www.evoluatech.com.br${r.url === '/' ? '' : r.url}">
+${fontesGoogle}
+<style>${css()}</style>
+</head>
+<body>
+${corpoPagina(ctx, k)}
 <script>${js}</script>
 </body>
 </html>
@@ -90,4 +137,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   validar.forEach((p) => console.warn(`a validar: ${p.caminho} (${p.motivo})`));
   gravar('site/dist/preview/home.html', montar({ sabor: 'preview' }));
   gravar('site/dist/artifact/home.html', montar({ sabor: 'artifact' }));
+  if (args.has('--producao')) {
+    const ctx = contexto('producao');
+    for (const k of ORDEM) gravar(`site/dist/site/${ROTAS[k].url === '/' ? 'index' : ROTAS[k].url.slice(1)}.html`, montarPagina(k, ctx));
+  }
 }

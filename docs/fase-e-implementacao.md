@@ -4,7 +4,8 @@
 
 - `site/src/css/tokens.css`: único lugar com cores, tipografia, espaço, forma e movimento (Fase D).
 - `site/src/css/base.css` e `secoes.css`: componentes e seções; sem cor literal (um teste garante).
-- `site/src/pages/home.mjs`: as 14 seções da Fase C, geradas a partir de `site/data/facts.json`.
+- `site/src/pages/` (`rotas`, `comp`, `paginas`, `layout`): 13 páginas geradas a partir de `site/data/facts.json`. Protótipo em arquivo único (navegação por hash) e, com `--producao`, um HTML por página em `site/dist/site/`.
+- `site/assets/fotos/`: fotos aprovadas (ver `LEIA-ME.md`); o build converte e incorpora.
 - `site/src/js/site.js`: menu, seletor Condomínios/Empresas, abas do fluxo, carrossel, contagem, formulário e tracking, sem bibliotecas.
 - `site/data/facts.json`: números e textos; itens com `provisorio: true` bloqueiam a publicação em produção; `validar: true` apenas avisa.
 - `site/fonts/`: Baloo 2 e Nunito Sans (latino, variáveis) para hospedagem própria.

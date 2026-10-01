@@ -11,6 +11,8 @@
   --sinal: #afde12;
   --folha: #4f6b1f;
   --petroleo-tinta: #124a6a;
+  --grafite-tinta: #4a4a4a;
+  --suave-grafite: #c9cbc9;
   /* Cores novas (web), contraste verificado na Fase D */
   --verde-hover: #8ccb1a;
   --erro: #b3261e;
@@ -94,4 +96,15 @@
   --destaque: var(--petroleo);
   --foco: var(--petroleo);
   --linha: var(--petroleo);
+}
+
+[data-universo="grafite"] {
+  --fundo: var(--grafite);
+  --fundo-tinta: var(--grafite-tinta);
+  --fundo-card: rgba(255, 255, 255, 0.08);
+  --borda-card: rgba(255, 255, 255, 0.18);
+  --texto: var(--branco);
+  --texto-suave: var(--suave-grafite);
+  --destaque: var(--verde);
+  --foco: var(--verde);
 }

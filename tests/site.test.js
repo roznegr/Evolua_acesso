@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { montar, coletarProvisorios, css } from '../scripts/build-site.mjs';
+import { montar, montarPagina, coletarProvisorios, css } from '../scripts/build-site.mjs';
+import { ORDEM } from '../site/src/pages/paginas.mjs';
+import { ROTAS } from '../site/src/pages/rotas.mjs';
 
 const ler = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const facts = JSON.parse(ler('site/data/facts.json'));
@@ -16,8 +18,12 @@ const lum = (hex) => {
 const razao = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
 const token = (nome) => ler('site/src/css/tokens.css').match(new RegExp(`--${nome}:\\s*(#[0-9a-fA-F]{6})`))[1];
 
-test('home tem um único H1 e imagens com alt', () => {
-  assert.equal((html.match(/<h1[\s>]/g) || []).length, 1);
+test('cada página tem um único H1 e as imagens têm alt', () => {
+  assert.equal((html.match(/<h1[\s>]/g) || []).length, ORDEM.length);
+  for (const k of ORDEM) {
+    const pagina = html.split(`data-pagina="${k}"`)[1].split('</main>')[0];
+    assert.equal((pagina.match(/<h1[\s>]/g) || []).length, 1, `H1 em ${k}`);
+  }
   for (const m of html.matchAll(/<img\b[^>]*>/g)) assert.match(m[0], /alt="[^"]+"/);
 });
 
@@ -38,7 +44,7 @@ test('pares de cor do DS têm contraste mínimo', () => {
   const pares = [
     ['petroleo', 'verde', 4.5], ['grafite', 'branco', 4.5], ['grafite', 'broto', 4.5], ['folha', 'branco', 4.5], ['folha', 'broto', 4.5],
     ['branco', 'petroleo', 4.5], ['sinal', 'petroleo', 4.5], ['petroleo', 'verde-hover', 4.5], ['erro', 'branco', 4.5], ['branco', 'petroleo-tinta', 4.5],
-    ['cinza', 'branco', 3],
+    ['cinza', 'branco', 3], ['branco', 'grafite', 4.5], ['verde', 'grafite', 4.5], ['sinal', 'grafite', 4.5], ['suave-grafite', 'grafite', 4.5], ['suave-grafite', 'grafite-tinta', 4.5],
   ];
   for (const [a, b, min] of pares) assert.ok(razao(token(a), token(b)) >= min, `${a} sobre ${b}`);
 });
@@ -54,9 +60,22 @@ test('conteúdo provisório bloqueia a publicação em produção', () => {
   execFileSync('node', ['scripts/build-site.mjs', '--producao', '--aceitar-provisorio'], { stdio: 'pipe' });
 });
 
-test('build de produção não marca provisório nem traz aviso de protótipo', () => {
-  const prod = montar({ sabor: 'producao' });
-  const semEstilo = prod.replace(/<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g, '');
-  assert.doesNotMatch(semEstilo, /prov-tag|class="proto"|class="[^"]*\bprov\b/);
+test('páginas de produção: título, descrição, canonical e H1 próprios, sem marcação de protótipo', () => {
+  const titulos = new Set();
+  for (const k of ORDEM) {
+    const pagina = montarPagina(k);
+    const semEstilo = pagina.replace(/<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g, '');
+    assert.doesNotMatch(semEstilo, /prov-tag|class="proto"|class="[^"]*\bprov\b|data-pagina=/, k);
+    assert.equal((semEstilo.match(/<h1[\s>]/g) || []).length, 1, `H1 em ${k}`);
+    assert.match(semEstilo, new RegExp(`<link rel="canonical" href="https://www.evoluatech.com.br${ROTAS[k].url === '/' ? '' : ROTAS[k].url}">`));
+    assert.ok(ROTAS[k].desc.length > 40 && ROTAS[k].desc.length <= 170, `descrição de ${k}`);
+    titulos.add(ROTAS[k].titulo);
+  }
+  assert.equal(titulos.size, ORDEM.length, 'títulos únicos');
   assert.ok(css().length > 1000);
+});
+
+test('páginas de produção linkam para as URLs reais do Wix', () => {
+  const home = montarPagina('home');
+  for (const k of ['condominios', 'empresas', 'portaria', 'solucoes', 'blog', 'contato']) assert.ok(home.includes(`href="${ROTAS[k].url}"`), k);
 });

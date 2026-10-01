@@ -162,3 +162,17 @@ Em aberto:
 3. TAG e controle veicular continuam?
 4. Política de privacidade atualizada para dado biométrico (jurídico).
 5. Bairros/cidades atendidos para as páginas locais.
+
+
+## 12. Revisão 2 (01/10): site em várias páginas, home enxuta
+
+Feedback do cliente sobre o protótipo: a home estava longa demais. Nova estrutura:
+
+- **Home (geral e sucinta):** hero em grafite com reconhecimento facial · indicadores · "mais do que abrir e fechar portas" com cartões das cinco soluções · **escolha entre Condomínios e Empresas** · slot de conteúdos · CTA final. Qualquer público se reconhece e segue para a página do seu caminho.
+- **Condomínios** (`/portaria-remota-condominial`) e **Empresas** (`/portaria-remota-empresarial`): cada uma com problema, fluxo de acesso, reconhecimento facial, soluções, "por que a Evolua", FAQ próprio e CTA, escritas para o seu público.
+- **Portaria remota** (`/portaria-remota`): uma página só para ela (o que é, como funciona, benefícios, FAQ completo).
+- **Soluções** (`/servicos`): hub que leva a uma página avulsa por solução: **Controle de acesso** (`/acesso`), **App Evolua** (`/app-evolua`), **Evolua Loker** (`/evolua-loker`), **Automação** (`/automacao`).
+- **Conteúdos** (`/blog`, com o slot na home), **Trabalhe conosco** (`/trabalhe-conosco`), **Contato** (`/contato`) e **Sobre** (`/qualidade`).
+- **Cor:** o grafite entra como fundo (hero, escolha de caminho e CTA final) e o verde deixa de ser fundo de seção. O verde segue como cor de ação e destaque. Decisão do cliente; o Design System usa o grafite sobretudo como cor de texto (7% da proporção).
+- **Menu:** Condomínios · Empresas · Portaria remota · Soluções · Conteúdos · Contato, e botão "Análise gratuita".
+- Páginas locais (Macaé e Rio das Ostras) ficam para a etapa seguinte.
