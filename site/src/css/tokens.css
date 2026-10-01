@@ -1,0 +1,97 @@
+/* Tokens do Design System Evolua Editorial, traduzidos para web (docs/fase-d-direcao-visual.md).
+   Único lugar com valores de cor, tipografia, espaço e movimento. */
+:root {
+  /* Cores do DS */
+  --verde: #7bbe00;
+  --petroleo: #0b3954;
+  --grafite: #3a3a3a;
+  --cinza: #858683;
+  --branco: #ffffff;
+  --broto: #effadb;
+  --sinal: #afde12;
+  --folha: #4f6b1f;
+  --petroleo-tinta: #124a6a;
+  /* Cores novas (web), contraste verificado na Fase D */
+  --verde-hover: #8ccb1a;
+  --erro: #b3261e;
+
+  /* Tipografia */
+  --fonte-titulo: "Baloo 2", "Nunito", "Segoe UI", Arial, sans-serif;
+  --fonte-texto: "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --t-1: clamp(2.75rem, 1.2rem + 5.5vw, 5rem);
+  --t-2: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  --t-3: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem);
+  --t-sub: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --t-corpo: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --t-legenda: 0.875rem;
+  --t-rotulo: 0.8125rem;
+  --t-numero: clamp(3rem, 2rem + 6vw, 6rem);
+
+  /* Espaço (grade de 8 px do DS) */
+  --espaco-1: 0.5rem;
+  --espaco-2: 1rem;
+  --espaco-3: 1.5rem;
+  --espaco-4: 2rem;
+  --espaco-6: 3rem;
+  --espaco-8: 4rem;
+  --espaco-12: 6rem;
+  --margem: clamp(1rem, 5vw, 5rem);
+  --secao: clamp(4rem, 10vw, 8rem);
+  --container: 75rem;
+  --container-largo: 82.5rem;
+
+  /* Forma */
+  --raio-sm: 12px;
+  --raio-md: 24px;
+  --raio-lg: clamp(24px, 4vw, 48px);
+  --raio-pill: 999px;
+  --faceta-cq: 28.67cqw; /* tan(16deg) da largura do contêiner */
+  --sombra-suave: 0 20px 48px rgba(11, 57, 84, 0.16);
+  --brilho-sinal: 0 0 0 6px rgba(175, 222, 18, 0.22);
+
+  /* Movimento */
+  --d-micro: 150ms;
+  --d-hover: 250ms;
+  --d-entrada: 400ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Universo Claro (padrão) */
+  --fundo: var(--branco);
+  --fundo-tinta: var(--broto);
+  --fundo-card: var(--broto);
+  --borda-card: rgba(58, 58, 58, 0.16);
+  --texto: var(--grafite);
+  --texto-suave: #666765;
+  --destaque: var(--folha);
+  --foco: var(--folha);
+  --linha: var(--verde);
+}
+
+[data-universo="broto"] {
+  --fundo: var(--broto);
+  --fundo-tinta: var(--branco);
+  --fundo-card: var(--branco);
+}
+
+[data-universo="petroleo"] {
+  --fundo: var(--petroleo);
+  --fundo-tinta: var(--petroleo-tinta);
+  --fundo-card: rgba(255, 255, 255, 0.08);
+  --borda-card: rgba(123, 190, 0, 0.4);
+  --texto: var(--branco);
+  --texto-suave: #a9bcc8;
+  --destaque: var(--verde);
+  --foco: var(--verde);
+}
+
+[data-universo="verde"] {
+  --fundo: var(--verde);
+  --fundo-tinta: var(--petroleo);
+  --fundo-card: rgba(11, 57, 84, 0.1);
+  --borda-card: rgba(11, 57, 84, 0.3);
+  --texto: var(--petroleo);
+  --texto-suave: var(--grafite);
+  --destaque: var(--petroleo);
+  --foco: var(--petroleo);
+  --linha: var(--petroleo);
+}

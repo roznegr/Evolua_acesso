@@ -1,0 +1,40 @@
+{
+  "empresa": {
+    "nome": "Evolua",
+    "desde": 2017,
+    "telefone": "(22) 2142-6561",
+    "whatsapp_href": "https://api.whatsapp.com/send?phone=552221426561&text=Ol%C3%A1,%20estava%20na%20p%C3%A1gina%20da%20Evolua%20e%20gostaria%20de%20um%20atendimento",
+    "email": "comercial@evoluatech.com.br",
+    "endereco": "Rua Vereador Senísio Vieira, 44, sala 701, Praia Campista, Macaé/RJ, 27923-100",
+    "cidades": ["Macaé", "Rio das Ostras"]
+  },
+  "indicadores": {
+    "fonte": {
+      "texto": "Dados operacionais da Evolua, set/2026",
+      "provisorio": true,
+      "motivo": "Período e fonte reais ainda não informados"
+    },
+    "itens": [
+      { "id": "atendimentos", "valor": 46000, "rotulo": "atendimentos mensais", "status": true, "validar": true, "motivo": "Divergência interna (17 mil × 46 mil); mantido por decisão do cliente em 01/10" },
+      { "id": "usuarios", "valor": 7000, "rotulo": "usuários cadastrados" },
+      { "id": "acessos", "valor": 500000, "rotulo": "acessos mensais" }
+    ]
+  },
+  "app": {
+    "nome": "App Evolua",
+    "provisorio": true,
+    "motivo": "Funções do app novo ainda não informadas; lista derivada do site atual, sem QR code",
+    "funcoes": [
+      "Convites de visita com dia e horário",
+      "Linha do tempo de acessos",
+      "Mural de recados do condomínio",
+      "Imagens das câmeras da portaria",
+      "Gestão de usuários"
+    ]
+  },
+  "loker": {
+    "texto": "O morador é avisado pelo app e retira a encomenda.",
+    "provisorio": true,
+    "motivo": "Fluxo de retirada sem QR code ainda não informado"
+  }
+}
