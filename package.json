@@ -1,0 +1,17 @@
+{
+  "name": "evolua-diagnostico",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "LP + diagnóstico guiado de acesso condominial da Evolua (evoluatech.com.br)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.js"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}
