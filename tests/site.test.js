@@ -101,6 +101,9 @@ test('home: escolha de caminho vem antes de "Mais do que abrir e fechar portas"'
 });
 
 test('fotos entram na proporção original e o chip de reconhecimento facial não tem preenchimento', () => {
-  assert.match(css(), /\.chip-fac \{[^}]*background: transparent[^}]*border: 1\.5px solid var\(--sinal\)/);
+  const chip = css().match(/\.chip-fac \{[^}]*\}/)[0];
+  assert.match(chip, /background: transparent/);
+  assert.match(chip, /border: 1\.5px solid var\(--sinal\)/);
+  assert.match(chip, /color: var\(--sinal\)/);
   assert.match(html, /<figure class="slot tem-foto" data-slot="condominio" style="aspect-ratio:1152 \/ 864"/);
 });
