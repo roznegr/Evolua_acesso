@@ -8,3 +8,8 @@ Coloque aqui as fotos aprovadas, com estes nomes (webp, jpg ou png). O build con
 | `central.*` | Portaria remota, Sobre e seção da central | Imagem ilustrativa até haver foto real da central da Evolua |
 
 Sem o arquivo, o site mostra um espaço reservado com a descrição da foto.
+
+## Situação atual (01/10)
+
+- `hero.webp`: foto do rosto com a camada de reconhecimento facial, **cortada** para retirar o cartão "Autorizado" com nome de pessoa. Imagem ilustrativa.
+- `central.webp`: central de atendimento. Imagem ilustrativa; trocar por foto real da central da Evolua quando houver.
